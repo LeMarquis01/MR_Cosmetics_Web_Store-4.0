@@ -11,6 +11,9 @@ import Checkout from './pages/Checkout';
 import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
+import Reviews from './pages/Reviews';
+import WhyMR from './pages/WhyMR';
+import Login from './pages/Login';
 import { AnimatePresence } from 'motion/react';
 
 function ScrollToTop() {
@@ -38,6 +41,9 @@ export default function App() {
             <Routes location={location}>
               <Route path="/" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/reviews" element={<Reviews />} />
+              <Route path="/why-mr" element={<WhyMR />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
@@ -47,12 +53,8 @@ export default function App() {
               
               {/* Fallback for complex structure */}
               <Route path="/wellness" element={<Shop />} />
-              <Route path="/about" element={<Home />} />
-              <Route path="/terms" element={<Home />} />
-              <Route path="/privacy" element={<Home />} />
-              <Route path="/shipping" element={<Home />} />
-              <Route path="/contact" element={<Home />} />
               <Route path="/loyalty" element={<Dashboard />} />
+              <Route path="*" element={<Home />} />
             </Routes>
           </AnimatePresence>
         </main>

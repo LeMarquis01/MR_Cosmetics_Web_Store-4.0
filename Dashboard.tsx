@@ -36,7 +36,11 @@ export default function Dashboard() {
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
              <div className="relative group">
                 <div className="w-40 h-40 rounded-[60px] overflow-hidden border-4 border-brand-gold/30 shadow-2xl relative z-10">
-                   <img src={user.avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'} className="w-full h-full object-cover" />
+                   <img 
+                     src={user.avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'} 
+                     className="w-full h-full object-cover" 
+                     referrerPolicy="no-referrer"
+                   />
                 </div>
                 <div className="absolute -inset-2 border border-brand-gold/20 rounded-[64px] animate-orbit opacity-50" />
                 <button className="absolute -bottom-2 -right-2 w-10 h-10 bg-brand-gold rounded-full flex items-center justify-center text-brand-forest shadow-xl z-20 hover:scale-110 transition-transform">
@@ -77,7 +81,7 @@ export default function Dashboard() {
                         <div className={cn("p-2 rounded-xl transition-colors", activeTab === tab.id ? "bg-brand-gold text-brand-forest" : "bg-brand-forest/5 group-hover:bg-brand-forest/10")}>
                            {tab.icon}
                         </div>
-                        <span className="text-xs font-bold uppercase tracking-widest">{tab.label}</span>
+                        <span className="text-xs font-bold uppercase tracking-widest text-brand-gold">{tab.label}</span>
                      </button>
                    ))}
                    <div className="pt-4 mt-4 border-t border-brand-forest/5">
@@ -107,7 +111,7 @@ export default function Dashboard() {
                           className="space-y-12"
                         >
                            <div className="flex justify-between items-end">
-                              <h2 className="serif text-4xl italic text-brand-forest">Radiant Overview</h2>
+                              <h2 className="serif text-4xl italic text-brand-gold">Radiant Overview</h2>
                               <p className="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Member since 2024</p>
                            </div>
 
@@ -180,7 +184,7 @@ export default function Dashboard() {
 
                       {activeTab === 'orders' && (
                         <motion.div key="orders" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-8">
-                           <h2 className="serif text-4xl italic text-brand-forest">Past Revelations</h2>
+                           <h2 className="serif text-4xl italic text-brand-gold">Past Revelations</h2>
                            <div className="space-y-4">
                               {orders.map(order => (
                                 <div key={order.id} className="bg-brand-cream/50 p-8 rounded-[40px] border border-brand-forest/10 flex flex-col md:flex-row justify-between gap-8 h-fit">
@@ -222,7 +226,7 @@ export default function Dashboard() {
 
                       {activeTab === 'profile' && (
                         <motion.div key="profile" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
-                           <h2 className="serif text-4xl italic text-brand-forest">Sanctuary Profile</h2>
+                           <h2 className="serif text-4xl italic text-brand-gold">Sanctuary Profile</h2>
                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                              <div className="space-y-2">
                                 <label className="text-[10px] font-bold uppercase tracking-widest text-brand-gold">DisplayName</label>

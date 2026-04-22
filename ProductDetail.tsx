@@ -63,7 +63,12 @@ export default function ProductDetail() {
                         activeImg === idx ? "border-brand-gold scale-105" : "border-brand-forest/5 opacity-60 hover:opacity-100"
                       )}
                     >
-                      <img src={img} className="w-full h-full object-cover" />
+                      <img 
+                        key={idx}
+                        src={img} 
+                        className="w-full h-full object-cover" 
+                        referrerPolicy="no-referrer"
+                      />
                     </button>
                   ))}
                </div>

@@ -20,7 +20,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <div className="relative">
-              <div className="w-10 h-10 marble-bg rounded-full flex items-center justify-center text-brand-gold font-bold text-xl serif animate-float shadow-lg">
+              <div className="w-10 h-10 bg-brand-gold rounded-full flex items-center justify-center text-brand-forest font-bold text-xl serif animate-float shadow-lg">
                 MR
               </div>
               <div className="absolute -inset-1 border border-brand-gold/30 rounded-full animate-orbit opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -33,8 +33,10 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex space-x-8 items-center">
-            <NavLink to="/shop" className={({ isActive }) => cn("text-sm font-medium tracking-wide uppercase transition-colors hover:text-brand-gold", isActive ? "text-brand-gold" : "text-brand-forest")}>Shop All</NavLink>
-            <NavLink to="/about" className="text-sm font-medium tracking-wide uppercase text-brand-forest hover:text-brand-gold">About</NavLink>
+            <NavLink to="/shop" className={({ isActive }) => cn("text-sm font-medium tracking-wide uppercase transition-colors hover:text-brand-gold", isActive ? "text-brand-gold" : "text-brand-forest")}>Shop</NavLink>
+            <NavLink to="/reviews" className={({ isActive }) => cn("text-sm font-medium tracking-wide uppercase transition-colors hover:text-brand-gold", isActive ? "text-brand-gold" : "text-brand-forest")}>Reviews</NavLink>
+            <NavLink to="/why-mr" className={({ isActive }) => cn("text-sm font-medium tracking-wide uppercase transition-colors hover:text-brand-gold", isActive ? "text-brand-gold" : "text-brand-forest")}>Why MR?</NavLink>
+            <NavLink to="/login" className={({ isActive }) => cn("text-sm font-medium tracking-wide uppercase transition-colors hover:text-brand-gold", isActive ? "text-brand-gold" : "text-brand-forest")}>Login</NavLink>
           </div>
 
           {/* Actions */}
@@ -53,9 +55,11 @@ export default function Navbar() {
             <Link to="/dashboard" className="p-2 text-brand-forest hover:text-brand-gold transition-colors">
               <User size={20} />
             </Link>
-            <Link to="/admin" className="p-2 text-brand-forest hover:text-brand-gold transition-colors">
-              <Settings size={20} />
-            </Link>
+            {user?.email === 'member@mrcosmetics.co.ke' && (
+              <Link to="/admin" className="p-2 text-brand-forest hover:text-brand-gold transition-colors">
+                <Settings size={20} />
+              </Link>
+            )}
             <button 
               className="md:hidden p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -100,7 +104,10 @@ export default function Navbar() {
           >
             <button onClick={() => setIsMobileMenuOpen(false)} className="absolute top-8 right-8 p-2"><X size={24} /></button>
             <NavLink to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl serif font-light py-4 border-b border-brand-forest/10">Home</NavLink>
-            <NavLink to="/shop" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl serif font-light py-4 border-b border-brand-forest/10">Shop All</NavLink>
+            <NavLink to="/shop" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl serif font-light py-4 border-b border-brand-forest/10">Shop</NavLink>
+            <NavLink to="/reviews" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl serif font-light py-4 border-b border-brand-forest/10">Reviews</NavLink>
+            <NavLink to="/why-mr" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl serif font-light py-4 border-b border-brand-forest/10">Why MR?</NavLink>
+            <NavLink to="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl serif font-light py-4 border-b border-brand-forest/10">Login</NavLink>
             <NavLink to="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-4xl serif font-light py-4 border-b border-brand-forest/10">My Account</NavLink>
             <div className="mt-12">
               <p className="text-xs uppercase tracking-widest text-brand-gold font-bold mb-4">Follow Us</p>

@@ -1,19 +1,15 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Leaf, Sparkles, Award, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Leaf, Sparkles, Award, ShieldCheck, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useAppContext } from '../context/AppContext';
 
 import { cn } from '../lib/utils';
 
 export default function Home() {
-  const { products } = useAppContext();
-  const featuredProducts = products.slice(0, 4);
-
   const categories = [
-    { name: 'Skincare', img: 'https://images.unsplash.com/photo-1556227702-d1e4e7b5c232?auto=format&fit=crop&q=80&w=600', icon: <Leaf size={20} /> },
-    { name: 'Haircare', img: 'https://images.unsplash.com/photo-1527799822367-4748a1db3c0c?auto=format&fit=crop&q=80&w=600', icon: <Sparkles size={20} /> },
-    { name: 'Body', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=600', icon: <ShieldCheck size={20} /> },
+    { name: 'Skincare', img: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600', icon: <Leaf size={20} /> },
+    { name: 'Haircare', img: 'https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&q=80&w=800', icon: <Sparkles size={20} /> },
+    { name: 'Body', img: 'https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&q=80&w=600', icon: <ShieldCheck size={20} /> },
   ];
 
   return (
@@ -31,11 +27,26 @@ export default function Home() {
               <Sparkles size={12} />
               <span>Est. Nairobi 2026</span>
             </div>
-            <h1 className="text-6xl md:text-8xl serif text-brand-cream font-light leading-none">
-              Natural Beauty <br />
-              <span className="italic font-normal text-brand-gold underline decoration-brand-gold/30 underline-offset-8">Wellness</span> <br />
-              Found Here
-            </h1>
+            <div className="flex flex-col md:flex-row md:items-end gap-10">
+              <h1 className="text-6xl md:text-8xl serif text-brand-cream font-light leading-none">
+                Natural Beauty <br />
+                <span className="italic font-normal text-brand-gold underline decoration-brand-gold/30 underline-offset-8">Wellness</span> <br />
+                Found Here
+              </h1>
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 1 }}
+                className="w-48 h-72 md:w-[320px] md:h-[480px] shrink-0"
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" 
+                  className="w-full h-full object-cover rounded-[32px] border border-brand-gold/30 shadow-2xl hover:scale-[1.02] transition-transform duration-500"
+                  alt="Wellness and Radiance"
+                  referrerPolicy="no-referrer"
+                />
+              </motion.div>
+            </div>
             <p className="text-brand-cream/70 text-lg max-w-md leading-relaxed font-light">
               Experience the convergence of ancient botanical wisdom and modern luxury. MR Cosmetics brings the forest's purity to your vanity.
             </p>
@@ -58,8 +69,8 @@ export default function Home() {
           >
             <div className="w-[450px] h-[550px] relative">
               <img 
-                src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800"
-                alt="Luxury Serum"
+                src="/input_file_0.png"
+                alt="Wellness and Radiance"
                 className="w-full h-full object-cover rounded-[100px] border-2 border-brand-gold/20 shadow-2xl relative z-10"
                 referrerPolicy="no-referrer"
               />
@@ -120,56 +131,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Brand Story Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div className="relative order-2 lg:order-1">
-             <div className="grid grid-cols-2 gap-4">
-                <img 
-                  src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=600" 
-                  className="rounded-[40px] aspect-square object-cover shadow-xl"
-                  alt="Laboratory"
-                  referrerPolicy="no-referrer"
-                />
-                <img 
-                  src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=600" 
-                  className="rounded-[40px] aspect-square object-cover shadow-xl mt-12"
-                  alt="Bottles"
-                  referrerPolicy="no-referrer"
-                />
-             </div>
-             <div className="absolute inset-0 border-2 border-brand-gold/10 rounded-[60px] translate-x-4 translate-y-4 -z-10" />
-          </div>
-          <div className="space-y-8 order-1 lg:order-2">
-             <p className="text-brand-gold uppercase text-[10px] font-bold tracking-[0.4em]">Our Essence</p>
-             <h2 className="text-4xl md:text-6xl serif text-brand-forest leading-tight">Crafted in the Heart of the <span className="italic">Forest</span></h2>
-             <p className="text-brand-forest/70 leading-relaxed font-light text-lg">
-                For over a decade, MR Cosmetics has been a pioneer in extracting the most potent botanical essences from sustainably managed forest ecosystems. Our Nairobi-based studio is where science meets artisanal tradition.
-             </p>
-             <div className="space-y-6">
-                {[
-                  { t: 'Purity First', d: 'Zero synthetic preservatives or fragrances.' },
-                  { t: 'Artisan Mindset', d: 'Every bottle is hand-numbered and batch-certified.' }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start space-x-4">
-                     <div className="w-6 h-6 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold mt-1">
-                        <Sparkles size={12} />
-                     </div>
-                     <div>
-                        <h4 className="font-bold text-sm uppercase tracking-widest text-brand-forest">{item.t}</h4>
-                        <p className="text-sm text-brand-forest/60">{item.d}</p>
-                     </div>
-                  </div>
-                ))}
-             </div>
-             <Link to="/shop" className="inline-flex items-center space-x-4 text-brand-forest group font-bold uppercase text-xs tracking-widest border-b-2 border-brand-gold pb-2 hover:text-brand-gold transition-colors">
-                <span>Discover the Collection</span>
-                <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
-             </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Brand Values / Sustainability */}
       <section className="py-24 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -189,6 +150,32 @@ export default function Home() {
                 </p>
              </div>
            ))}
+        </div>
+      </section>
+
+
+      {/* Newsletter */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 marble-bg opacity-10" />
+        <div className="max-w-4xl mx-auto px-4 relative z-10 text-center space-y-8">
+          <div className="inline-block p-3 rounded-full bg-brand-gold/10 text-brand-gold animate-float">
+            <Mail size={24} />
+          </div>
+          <h2 className="text-4xl md:text-6xl serif text-brand-forest leading-tight">Join the <span className="italic">Botanical</span> Circle</h2>
+          <p className="text-brand-forest/60 text-lg max-w-xl mx-auto font-light">
+             Be the first to receive exclusive invites to our Nairobi studio events and early access to artisanal batch releases.
+          </p>
+          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto pt-4" onSubmit={(e) => e.preventDefault()}>
+            <input 
+              type="email" 
+              placeholder="Your email adress" 
+              className="flex-1 px-6 py-4 rounded-full border border-brand-forest/10 bg-white focus:outline-none focus:border-brand-gold transition-colors text-sm" 
+            />
+            <button className="px-8 py-4 bg-brand-forest text-brand-cream rounded-full font-bold uppercase text-[10px] tracking-widest hover:bg-brand-gold hover:text-brand-forest transition-all shrink-0">
+              Subscribe
+            </button>
+          </form>
+          <p className="text-[8px] uppercase tracking-widest text-brand-forest/30">Respecting your privacy as we do our ingredients.</p>
         </div>
       </section>
     </div>

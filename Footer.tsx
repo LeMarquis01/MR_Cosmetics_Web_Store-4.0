@@ -4,7 +4,7 @@ import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-forest marble-texture text-brand-cream pt-16 pb-8">
+    <footer className="marble-bg text-brand-cream pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
@@ -30,7 +30,7 @@ export default function Footer() {
           <div>
             <h4 className="text-brand-gold uppercase text-xs font-bold tracking-widest mb-6">Explore</h4>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/shop" className="hover:text-brand-gold transition-colors">Shop All</Link></li>
+              <li><Link to="/shop" className="hover:text-brand-gold transition-colors">Shop</Link></li>
               <li><Link to="/shop?cat=Skincare" className="hover:text-brand-gold transition-colors">Skincare</Link></li>
               <li><Link to="/shop?cat=Haircare" className="hover:text-brand-gold transition-colors">Haircare</Link></li>
               <li><Link to="/shop?cat=Body" className="hover:text-brand-gold transition-colors">Body Rituals</Link></li>

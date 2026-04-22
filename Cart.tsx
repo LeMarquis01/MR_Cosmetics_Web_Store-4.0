@@ -76,7 +76,11 @@ export default function Cart() {
                      className="bg-white rounded-[40px] p-6 border border-brand-forest/5 flex flex-col sm:flex-row items-center gap-8 group shadow-sm hover:shadow-lg transition-shadow"
                    >
                       <Link to={`/product/${item.id}`} className="w-40 h-40 rounded-3xl overflow-hidden shrink-0 border border-brand-forest/5">
-                         <img src={item.images[0]} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                         <img 
+                           src={item.images[0]} 
+                           className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                           referrerPolicy="no-referrer"
+                         />
                       </Link>
                       <div className="flex-1 space-y-4 text-center sm:text-left">
                          <div>

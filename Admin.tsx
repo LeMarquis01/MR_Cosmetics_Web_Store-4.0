@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
@@ -22,8 +23,18 @@ import { cn } from '../lib/utils';
 import { Product } from '../types';
 
 export default function Admin() {
-  const { products, setProducts, orders } = useAppContext();
+  const { products, setProducts, orders, user } = useAppContext();
+  const navigate = useNavigate();
   const [activeView, setActiveView] = useState<'stats' | 'inventory' | 'orders' | 'customers'>('stats');
+
+  useEffect(() => {
+    if (!user || user.email !== 'member@mrcosmetics.co.ke') {
+      navigate('/');
+    }
+  }, [user, navigate]);
+
+  if (!user || user.email !== 'member@mrcosmetics.co.ke') return null;
+
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -223,7 +234,11 @@ export default function Admin() {
                           <tr key={p.id} className="group hover:bg-brand-cream/50 transition-colors">
                              <td className="py-6">
                                 <div className="flex items-center space-x-4">
-                                   <img src={p.images[0]} className="w-12 h-12 rounded-xl object-cover shrink-0" />
+                                   <img 
+                                      src={p.images[0]} 
+                                      className="w-12 h-12 rounded-xl object-cover shrink-0" 
+                                      referrerPolicy="no-referrer"
+                                    />
                                    <span className="text-sm font-bold text-brand-forest line-clamp-1">{p.name}</span>
                                 </div>
                              </td>

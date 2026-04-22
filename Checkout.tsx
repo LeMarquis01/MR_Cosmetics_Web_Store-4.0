@@ -143,23 +143,26 @@ export default function Checkout() {
                      <h3 className="serif text-3xl italic text-brand-forest">Payment Ritual</h3>
                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {[
-                           { id: 'mpesa', name: 'M-PESA', icon: <Smartphone />, color: 'bg-green-600' },
-                           { id: 'card', name: 'Card', icon: <CreditCard />, color: 'bg-brand-forest' },
-                           { id: 'paypal', name: 'PayPal', icon: <Wallet />, color: 'bg-blue-600' }
+                           { id: 'mpesa', name: 'M-PESA', icon: <Smartphone />, color: 'bg-green-600', logos: ['M-PESA'] },
+                           { id: 'card', name: 'Card', icon: <CreditCard />, color: 'bg-brand-forest', logos: ['VISA', 'MC'] },
+                           { id: 'paypal', name: 'PayPal', icon: <Wallet />, color: 'bg-blue-600', logos: ['PP'] }
                         ].map((m) => (
                            <button 
                              key={m.id}
                              onClick={() => setPaymentMethod(m.id as any)}
                              className={cn(
-                               "p-6 rounded-[32px] border-2 flex flex-col items-center gap-4 transition-all",
+                               "p-6 rounded-[32px] border-2 flex flex-col items-center gap-4 transition-all relative",
                                paymentMethod === m.id ? "border-brand-gold bg-brand-gold/5" : "border-brand-forest/5 hover:border-brand-gold/20"
                              )}
                            >
                               <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center text-white", m.color)}>
                                  {m.icon}
                               </div>
-                              <span className="text-xs font-bold uppercase tracking-widest">{m.name}</span>
-                              {paymentMethod === m.id && <CheckCircle2 size={16} className="text-brand-gold" />}
+                              <span className="text-[10px] font-bold uppercase tracking-widest">{m.name}</span>
+                              <div className="flex gap-1 opacity-40">
+                                 {m.logos.map(l => <span key={l} className="text-[6px] font-black italic">{l}</span>)}
+                              </div>
+                              {paymentMethod === m.id && <CheckCircle2 size={16} className="text-brand-gold absolute top-4 right-4" />}
                            </button>
                         ))}
                      </div>
@@ -213,7 +216,11 @@ export default function Checkout() {
                    {cartItems.map(item => (
                      <div key={item.id} className="flex gap-4">
                         <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-brand-forest/5">
-                           <img src={item.images[0]} className="w-full h-full object-cover" />
+                           <img 
+                             src={item.images[0]} 
+                             className="w-full h-full object-cover" 
+                             referrerPolicy="no-referrer"
+                           />
                         </div>
                         <div className="flex-1 flex justify-between items-start">
                            <div>
@@ -240,13 +247,35 @@ export default function Checkout() {
                    </div>
                 </div>
 
-                <div className="p-4 bg-brand-gold/10 rounded-2xl border border-brand-gold/10 flex items-center space-x-3">
+                <div className="p-4 bg-brand-gold/10 rounded-2xl border border-brand-gold/10 flex items-center space-x-3 mb-6">
                    <div className="w-8 h-8 rounded-full bg-brand-gold text-brand-forest flex items-center justify-center shrink-0">
                       <Sparkles size={14} />
                    </div>
                    <div>
                       <p className="text-[10px] font-bold uppercase tracking-widest text-brand-forest">Loyalty Reward</p>
                       <p className="text-[9px] text-brand-gold font-bold">EARN {Math.floor(total)} POINTS</p>
+                   </div>
+                </div>
+
+                {/* Security Trust Badges */}
+                <div className="pt-8 border-t border-brand-forest/5 space-y-6">
+                   <div className="flex items-center space-x-4">
+                      <div className="w-10 h-10 rounded-full border border-brand-forest/10 flex items-center justify-center text-brand-gold">
+                         <ShieldCheck size={20} />
+                      </div>
+                      <div>
+                         <p className="text-[10px] font-bold uppercase tracking-widest text-brand-forest">Internet Security</p>
+                         <p className="text-[8px] text-brand-forest/40 uppercase tracking-widest">256-bit SSL Encrypted</p>
+                      </div>
+                   </div>
+                   <div className="flex items-center space-x-4">
+                      <div className="w-10 h-10 rounded-full border border-brand-forest/10 flex items-center justify-center text-brand-gold">
+                         <Truck size={20} />
+                      </div>
+                      <div>
+                         <p className="text-[10px] font-bold uppercase tracking-widest text-brand-forest">Secure Ritual Shipping</p>
+                         <p className="text-[8px] text-brand-forest/40 uppercase tracking-widest">Tracked & Insured Delivery</p>
+                      </div>
                    </div>
                 </div>
              </div>
